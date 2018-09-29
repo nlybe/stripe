@@ -573,7 +573,8 @@ class StripeClient {
 			'currency',
 			'interval',
 			'interval_count',
-			'name',
+			'nickname',
+                        'product',
 			'trial_period_days',
 			'metadata',
 			'statement_description'

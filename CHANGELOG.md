@@ -1,3 +1,10 @@
+<a name="2.1.8"></a>
+## [2.1.8](https://github.com/arckinteractive/stripe/compare/2.1.7...v2.1.8) (2018-08-16)
+
+* Added compatibility with latest stripe-php library (6.15.0)
+* Added **product** attribute on plan creation
+
+
 <a name="2.1.7"></a>
 ## [2.1.7](https://github.com/arckinteractive/stripe/compare/2.1.6...v2.1.7) (2017-10-13)
 
