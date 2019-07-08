@@ -13,4 +13,6 @@ $value = (float) elgg_extract('value', $vars, 0);
 $vars['pattern'] = "\d+(\.\d{2})?";
 $vars['value'] = number_format($value, 2, '.', '');
 
-echo elgg_view('input/text', $vars);
+// echo elgg_view('input/text', $vars);
+$vars['#type'] = 'text';
+echo elgg_view_field($vars);

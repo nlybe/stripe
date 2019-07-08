@@ -33,13 +33,15 @@ $supported_brands = '<ul class="stripe-accepted-cards">' . $supported_brands . '
 		<label title="<?php echo $required ?>" class="required"><?php echo elgg_echo('stripe:cards:name') ?></label>
 	
 		<?php
-			echo elgg_view('input/text', array(
+			// echo elgg_view('input/text', array(
+			echo elgg_view_field([
+				'#type' => 'text',
 				'data-stripe'                  => 'name',
 				'required'                     => true,
 				'parsley-trigger'              => 'focusout',
 				'parsley-validation-minlength' => 1,
 				'parsley-minlength'            => 6
-			));
+			]);
 		?>
 	</div>
 	
@@ -50,13 +52,14 @@ $supported_brands = '<ul class="stripe-accepted-cards">' . $supported_brands . '
 			<label title="<?php echo $required ?>" class="required"><?php echo elgg_echo('stripe:cards:address_line1') ?></label>
 		
 			<?php
-				echo elgg_view('input/text', array(
+				echo elgg_view_field([
+					'#type' => 'text',
 					'data-stripe'                  => 'address-line1',
 					'required'                     => true,
 					'parsley-trigger'              => 'focusout',
 					'parsley-validation-minlength' => 1,
 					'parsley-minlength'            => 1
-				));
+				]);
 			?>
 		</div>
 	<?php endif; ?>
@@ -65,7 +68,8 @@ $supported_brands = '<ul class="stripe-accepted-cards">' . $supported_brands . '
 		<div class="small-12 large-6 columns">
 			<label title="<?php echo $required ?>" class="required"><?php echo elgg_echo('stripe:cards:address_zip') ?></label>
 			<?php
-				echo elgg_view('input/text', array(
+				echo elgg_view_field([
+					'#type' => 'text',
 					'size'                         => 10,
 					'maxlength'                    => 10,
 					'data-stripe'                  => 'address-zip',
@@ -74,7 +78,7 @@ $supported_brands = '<ul class="stripe-accepted-cards">' . $supported_brands . '
 					'parsley-maxlength'            => 10,
 					'parsley-validation-minlength' => 1,
 					'parsley-minlength'            => 1
-				));
+				]);
 			?>
 		</div>
 	<?php endif; ?>
@@ -82,7 +86,8 @@ $supported_brands = '<ul class="stripe-accepted-cards">' . $supported_brands . '
 	<div class="small-12 large-8 columns">
 		<label title="<?php echo $required ?>" class="required"><?php echo elgg_echo('stripe:cards:number') ?></label>
 		<?php
-			echo elgg_view('input/text', array(
+			echo elgg_view_field([
+				'#type' => 'text',
 				'size'                         => 20,
 				'maxlength'                    => 20,
 				'data-stripe'                  => 'number',
@@ -92,14 +97,15 @@ $supported_brands = '<ul class="stripe-accepted-cards">' . $supported_brands . '
 				'parsley-maxlength'            => 20,
 				'parsley-validation-minlength' => 1,
 				'parsley-minlength'            => 6
-			));
+			]);
 		?>
 	</div>
 	
 	<div class="small-12 large-4 columns">
 		<label title="<?php echo $required ?>" class="required"><?php echo elgg_echo('stripe:cards:cvc') ?></label>
 		<?php
-			echo elgg_view('input/text', array(
+			echo elgg_view_field([
+				'#type' => 'text',
 				'size'                         => 4,
 				'maxlength'                    => 4,
 				'data-stripe'                  => 'cvc',
@@ -109,26 +115,28 @@ $supported_brands = '<ul class="stripe-accepted-cards">' . $supported_brands . '
 				'parsley-maxlength'            => 4,
 				'parsley-validation-minlength' => 1,
 				'parsley-minlength'            => 1
-			));
+			]);
 		?>
 	</div>
 	
 	<div class="small-12 large-6 columns">
 		<label title="<?php echo $required ?>" class="required"><?php echo elgg_echo('stripe:cards:expiration') ?></label>
 		<?php
-			echo elgg_view('input/dropdown', array(
+			echo elgg_view_field([
+				'#type' => 'dropdown',
 				'data-stripe' => 'exp-month',
 				'options'     => range(1, 12),
 				'required'    => true,
 				'class'       => 'small-6 columns'
-			));
+			]);
 		
-			echo elgg_view('input/dropdown', array(
+			echo elgg_view_field([
+				'#type' => 'dropdown',
 				'data-stripe' => 'exp-year',
 				'options'     => range((int) date("Y"), (int) date("Y") + 20),
 				'required'    => true,
 				'class'       => 'small-6 columns'
-			));
+			]);
 		?>
 	</div>
 	
@@ -136,12 +144,13 @@ $supported_brands = '<ul class="stripe-accepted-cards">' . $supported_brands . '
 		<?php
 			if (elgg_extract('show_remember', $vars, false)) {
 				echo '<label class="text-left">';
-				echo elgg_view('input/checkbox', array(
+				echo elgg_view_field([
+					'#type' => 'checkbox',
 					'name' => 'stripe-remember',
 					'checked' => true,
 					'value' => 1,
 					'default' => false,
-				));
+				]);
 				echo '<span class="inline">' . elgg_echo('stripe:cards:remember') . '</span>';
 				echo '</label>';
 			}
@@ -157,8 +166,9 @@ $supported_brands = '<ul class="stripe-accepted-cards">' . $supported_brands . '
 <?php
 if (elgg_extract('show_footer', $vars, true)) {
 	echo '<div class="elgg-foot text-right">';
-	echo elgg_view('input/submit', array(
+	echo elgg_view_field([
+		'#type' => 'submit',
 		'value' => elgg_echo('save')
-	));
+	]);
 	echo '</div>';
 }

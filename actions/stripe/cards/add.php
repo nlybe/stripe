@@ -19,8 +19,6 @@ $stripe = new StripeClient($attr);
 $card   = $stripe->createCard($token, true);
 
 if ($card) {
-	system_message(elgg_echo('stripe:cards:add:success'));
-
 	if (elgg_is_xhr()) {
 		echo json_encode(array(
 			'label' => "{$card->brand}-{$card->last4} ({$card->exp_month} / {$card->exp_year})",
@@ -30,9 +28,10 @@ if ($card) {
 			)),
 		));
 	}
+	return elgg_ok_response('', elgg_echo('stripe:cards:add:success'), REFERER);
 } else {
-	register_error(elgg_echo('stripe:cards:add:error'));
 	$stripe->showErrors();
+	return elgg_error_response(elgg_echo('stripe:cards:add:error'));
 }
 
 forward(REFERER);

@@ -26,10 +26,12 @@ if (!sizeof($cards->data)) {
 		'class' => 'elgg-button elgg-button-action stripe-cards-no-picker',
 	));
 }
-echo elgg_view('input/dropdown', array(
+
+echo elgg_view_field([
+	'#type' => 'dropdown',	
 	'name' => $name,
 	'value' => $value,
 	'options_values' => $options_values,
 	'class' => 'stripe-cards-picker' . $hidden,
 	'data-endpoint' => 'billing/add_card/' . $user->username,
-));
+]);

@@ -1,6 +1,8 @@
 Stripe
 ======
 
+![Elgg 3.0](https://img.shields.io/badge/Elgg-3.0-orange.svg?style=flat-square)
+
 Stripe.com API Layer for Elgg
 
 The plugin is intended primarily for developers, who are implementing a payments

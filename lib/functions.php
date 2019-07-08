@@ -50,7 +50,7 @@ function stripe_get_user_from_customer_id($customer_id = '') {
 		return false;
 	}
 
-	$users = elgg_get_entities_from_metadata(array(
+	$users = elgg_get_entities(array(
 		'types' => 'user',
 		'metadata_name_value_pairs' => array(
 			'name' => 'stripe_customer_id',
@@ -74,7 +74,7 @@ function stripe_get_user_from_account_id($account_id = '') {
 		return false;
 	}
 
-	$users = elgg_get_entities_from_metadata(array(
+	$users = elgg_get_entities(array(
 		'types' => 'user',
 		'metadata_name_value_pairs' => array(
 			'name' => 'stripe_account_id',

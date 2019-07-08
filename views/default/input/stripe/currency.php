@@ -20,4 +20,7 @@ foreach ($currencies as $currency_code => $options) {
 	$vars['options_values'][$currency_code] = $currency_code;
 }
 
-echo elgg_view('input/dropdown', $vars);
+
+// echo elgg_view('input/dropdown', $vars);
+$vars['#type'] = 'dropdown';
+echo elgg_view_field($vars);

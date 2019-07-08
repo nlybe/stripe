@@ -8,7 +8,7 @@ if (!class_exists('\\Stripe\\Stripe') && file_exists(__DIR__ . '/vendor/autoload
 require_once __DIR__ . '/lib/functions.php';
 require_once __DIR__ . '/lib/events.php';
 require_once __DIR__ . '/lib/hooks.php';
-require_once __DIR__ . '/lib/page_handlers.php';
+// require_once __DIR__ . '/lib/page_handlers.php';  // OBS
 
 elgg_register_event_handler('init', 'system', __NAMESPACE__ . '\\stripe_init');
 elgg_register_event_handler('pagesetup', 'system', __NAMESPACE__ . '\\stripe_pagesetup');
@@ -25,15 +25,15 @@ function stripe_init() {
 	elgg_extend_view('css/elgg', 'css/stripe/css');
 	elgg_extend_view('css/admin', 'css/stripe/css');
 
-	// Registering actions
-	elgg_register_action('stripe/customers/sync', __DIR__ . '/actions/stripe/customers/sync.php', 'admin');
-	elgg_register_action('stripe/cards/add', __DIR__ . '/actions/stripe/cards/add.php', 'public');
-	elgg_register_action('stripe/cards/remove', __DIR__ . '/actions/stripe/cards/remove.php');
-	elgg_register_action('stripe/cards/set_default', __DIR__ . '/actions/stripe/cards/make_default.php');
-	elgg_register_action('stripe/subscriptions/cancel', __DIR__ . '/actions/stripe/subscriptions/cancel.php');
+	// OBS on Elgg 3 - Registering actions
+	// elgg_register_action('stripe/customers/sync', __DIR__ . '/actions/stripe/customers/sync.php', 'admin');
+	// elgg_register_action('stripe/cards/add', __DIR__ . '/actions/stripe/cards/add.php', 'public');
+	// elgg_register_action('stripe/cards/remove', __DIR__ . '/actions/stripe/cards/remove.php');
+	// elgg_register_action('stripe/cards/set_default', __DIR__ . '/actions/stripe/cards/make_default.php');
+	// elgg_register_action('stripe/subscriptions/cancel', __DIR__ . '/actions/stripe/subscriptions/cancel.php');
 
-	// Page handler
-	elgg_register_page_handler('billing', 'stripe_page_handler');
+	// OBS - Page handler
+	// elgg_register_page_handler('billing', 'stripe_page_handler');
 
 	elgg_register_plugin_hook_handler('register', 'menu:stripe-actions', 'stripe_actions_menu');
 	elgg_register_plugin_hook_handler('ping', 'stripe.events', 'stripe_ping_event');

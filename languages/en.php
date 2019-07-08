@@ -1,6 +1,6 @@
 <?php
 
-$english = array(
+return [
 
 	'menu:page:header:stripe' => 'Stripe',
 
@@ -179,6 +179,4 @@ To view the details of this transactions, visit:
 %s',
 
 
-);
-
-add_translation('en', $english);
+];
